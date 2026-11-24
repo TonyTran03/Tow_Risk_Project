@@ -1,0 +1,33 @@
+# Local environments and editor files
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.env
+
+# Large raw towing input remains local
+/remorquages.csv
+
+# Generated model, archive and presentation files
+*.pkl
+*.joblib
+*.zip
+*.pptx
+
+# Reproducible outputs, not analysis source
+/part_c/tables/
+/part_c/figures/
+/part_c/handoff/test_predictions.csv
+/part_c/handoff/analysis_manifest.json
+/part_c/Part_C_Method_Results.pdf
+/part_c/Part_C_Method_Results.txt
+/part_c/Part_C_Speaker_Notes.txt
+/part_c_improved/tables/
+/part_c_improved/figures/
+/part_c_improved/handoff/
+/part_c_improved/RESULTS_AND_RECOMMENDATION.txt

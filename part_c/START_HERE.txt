@@ -1,0 +1,43 @@
+﻿PART C — TOWING REGRESSION
+
+Open Part_C_Tow_Risk.ipynb first. It has already been executed successfully.
+Part_C_Method_Results.pdf is the two-page methods/results section.
+Part_C_Method_Results.txt contains the editable text for the team report.
+The figures folder contains the main CI chart, panel-robust sensitivity chart,
+and extra-cars chart as high-resolution PNG and vector SVG files.
+The tables folder contains the model ladder, all coefficients, borough effects,
+MASE by borough, weather coefficients, temperature audit and scenario estimates.
+The two Part C slides correspond to slides 6 and 7 of the team plan.
+
+RERUN
+Keep this folder within the original project folder alongside data/processed/,
+the seven annual weather CSVs and remorquages.csv. Open the notebook and Run All.
+Install requirements.txt in your Python environment if needed. The notebook
+locates its input from the project folder or the part_c subfolder.
+The original Part A CSV is never overwritten. All model fitting uses training rows.
+
+KEY DEFINITIONS FOR THE REPORT AND PRESENTATION
+Outcome: log(tows + 1). Main count forecast: max(expm1(predicted log), 0).
+Snow percentages describe model-implied tows + 1, not individual towing risk.
+Snow comparisons must remain within the 30 cm cap.
+Conventional OLS CIs are in the main chart; dependence-aware CIs are separate.
+Extra cars are conditional model scenarios, using a training-only smearing
+adjustment, and depend on the stated 0 °C winter calendar baseline.
+
+HANDOFF TO D
+Use handoff/model_input.csv because Part A's temperature interpolation was
+replaced with a past-only fill. Other source columns are unchanged.
+Use handoff/test_predictions.csv for all three models and both inverse transforms.
+Use tables/mase_scales.csv for the training seasonal-naive MAE denominators.
+Use handoff/analysis_manifest.json for formulas, split dates and exact definitions.
+The m1_model.pkl, m2_model.pkl and m3_model.pkl files are training fits.
+Load only these trusted local model files, with the versions in the manifest:
+    import statsmodels.api as sm
+    model = sm.load('handoff/m3_model.pkl')
+Pickles can depend on package versions. The notebook is the portable way to refit.
+D still owns test-year naive/seasonal-naive benchmarks, winter splits, rolling
+checks, residual plots, ACF/Ljung-Box and the dropped-approach demonstrations.
+MASE below 1 alone does not prove a win over a benchmark in the test year.
+
+SOURCE DATA
+Original cleaned CSV SHA256: d3c99c238727b4475c4d5de991f2a69d9f47445ea25cdd13e867afba312434d4
